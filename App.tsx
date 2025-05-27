@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import {Icon, MD3Colors} from 'react-native-paper';
 import {useEffect, useState} from 'react';
-import{Conexao} from './Conf/Banco';
+import{Conexao, createTable} from './Conf/Banco';
 
 export default function App() {
   // Hook
   useEffect(()=>{
     async function Main(){
       let db = await Conexao();
+      await createTable(db);
     }
     Main();
   }, [])
